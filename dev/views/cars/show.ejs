@@ -1,0 +1,69 @@
+<%- include ('../partials/header.ejs') %>
+<div class="container" id="showcontainer">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Torque</p>
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action active "><%= cars.name %> </a>
+                  <a href="/cars" class="list-group-item list-group-item-action">View All Cars</a>
+                  <a href="/" class="list-group-item list-group-item-action">Homepage</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <img src="<%=cars.image%>" class="card-img-top img-responsive">
+                <div class="card-body">
+                
+                    <h1 class="card-title cartit" style="font-family: 'Bangers', cursive;
+                    "><%=cars.name%></h1><br>
+                  <p class="card-text"><%=cars.description%></p>
+                  <p class="card-text"> 
+                      <em>Submitted By: <%=cars.author.username%></em>
+                    </p>
+                    <% if(currentUser && cars.author.id.equals(currentUser._id)){ %>
+                        <a href="/cars/<%= cars._id %>/edit" class="btn btn-warning">Edit</a>
+                    <form id='delete-form'action="/cars/<%= cars._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger">Delete</button>
+                    </form>
+
+                   <% } %> 
+                    
+                </div>
+              </div>
+              
+              <div style="margin-top: 2rem;" class="card bg-light mb-3">
+                  
+                    <div class="text-left">      
+                        <a class="btn btn-success btn-sm float-right" href="/cars/<%= cars._id %>/comments/new">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add New Comment
+                        </a>
+                        <h4 style="float: left;"><span class="glyphicon glyphicon glyphicon-comment" aria-hidden="true"></span>
+                        <strong>Comments</strong></h4>
+                        <hr>
+                        </div>
+                    <%cars.comments.forEach(function(comment){%>
+                    <div class="row" >
+                        <div class="col-md-12 float-left">
+                            <strong style="text-align:left;"><%=comment.author.username%></strong> 
+                            <p>
+                                <%=comment.text%>
+                            </p>
+                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                <a href="/cars/<%= cars._id %>/comments/<%= comment._id %>/edit" class="btn btn-outline-warning btn-sm">Edit Comment</a>
+                                <form id='delete-form' action="/cars/<%= cars._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-outline-danger btn-sm">Delete Comment</button>
+                                </form>
+                                <% } %> 
+                        </div>
+                    </div>
+                 <% })%>
+              </div>
+        </div>
+   </div>  
+<hr>
+
+
+</div>
+<%- include ('../partials/footer.ejs') %>
+
+

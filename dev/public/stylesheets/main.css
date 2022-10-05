@@ -1,0 +1,24 @@
+#showcontainer{
+    margin-top: 2.5rem;
+}
+
+#delete-form{
+    display: inline;
+}
+
+.list-group-item{
+    font-family: 'Bangers', cursive;
+}
+
+.card-title,.indtitle{
+    font-family: 'Pacifico', cursive;
+}
+
+.card-text,.inddes,.figure-caption{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.navbar-brand{
+    font-family: 'Bangers', cursive;
+    font-size: 3rem;
+}

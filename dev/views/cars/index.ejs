@@ -1,0 +1,41 @@
+<%- include ('../partials/header.ejs') %>
+<div class="container">
+  <header class="jumbotron">
+    <div class="container">
+      <h1 class="indtitle"><i class="fa fa-car" aria-hidden="true"></i>Welcome to Torque!</h1>
+      <p class="inddes">Check out any of these pacy cars</p>
+      <form class="form-inline" action="/cars" method="GET">
+        <div class="form-group has-feedback">
+          <label for="search"></label>
+        <input class="form-control" type="text" name="search" placeholder="Search cars" autocomplete="off" >
+      </div>
+      </form>
+      <hr>
+      <a class="pull-right" href="/cars/new">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        Add New Car
+      </a>
+
+    </div>
+  </header>
+
+
+  <div class="row text-center">
+    <% cars.forEach(function(car){ %>
+      <div class="col-md-3 col-sm-6">
+        <figure class="figure">
+          <img src="<%= car.image %>" class="figure-img img-fluid rounded">
+          <figcaption class="figure-caption"><h4><%= car.name %></h4></figcaption>
+          <br>
+          <p>
+            <a href="/cars/<%= car._id %>" class="btn btn-info">More Info</a>
+          </p>
+        </figure>
+      </div>
+
+    <% });%>
+  </div>
+</div>
+
+
+<%- include ('../partials/footer.ejs') %>

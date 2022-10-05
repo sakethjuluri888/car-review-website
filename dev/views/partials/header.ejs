@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Open+Sans:wght@300&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>Torque</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark"  style="background-color: #262626"; >
+      <a href="/" class="navbar-brand">Torque</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+          <div class="navbar-nav ml-auto">
+            <% if(!currentUser) { %> 
+                <a href="/login" class="nav-item nav-link">Login</a>
+                <a href="/signup" class="nav-item nav-link">Sign Up</a>
+            <% } else { %>
+              <a  class="nav-item nav-link">Currently Signed in as : <%= currentUser.username %><a>
+              <a href="/logout" class="nav-item nav-link">Logout</a>
+          <%  } %>
+              
+              
+          </div>
+  </nav>
+         
+         
+        <div class="container">
+          <% if(error && error.length>0){ %>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+              <%= error %>
+            </div>
+            <% } %>
+
+    
+
+         <% if(success && success.length>0){ %>
+          <div class="alert alert-success alert-dismissible" role="alert">
+            <%= success %>
+          </div> 
+        <% } %> 
+         
+         
+        </div>
+        
+
+
+
+        
+       
